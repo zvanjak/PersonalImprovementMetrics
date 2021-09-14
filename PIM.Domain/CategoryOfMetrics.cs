@@ -9,4 +9,5 @@ namespace PIM.Domain
     class CategoryOfMetrics
     {
     }
+    // imam oi listu defaultnih kategorija
 }
