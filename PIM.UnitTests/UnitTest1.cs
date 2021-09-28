@@ -1,4 +1,4 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PIM.Domain;
 
 namespace PIM.UnitTests
@@ -13,6 +13,16 @@ namespace PIM.UnitTests
 
             // metrike
             PersonalEvaluationMetric m1 = new PersonalEvaluationMetric("a");
+
+            ActionTimeMetricFormula ustatiDo8 = new ActionTimeMetricFormula("Ustati do 8");
+            ActionTimeMetricIntervals kadSamZapalioPrvog = new ActionTimeMetricIntervals("Kad sam zapalio prvoga");
+            ActionTimeMetricFormula spavanjeDo1 = new ActionTimeMetricFormula("Spavanje do 1");
+            ActionTimeMetricFormula veceratioDo21 = new ActionTimeMetricFormula("Večerati do 21");
+
+            PersonalEvaluationMetric kolikoSamVecerao = new PersonalEvaluationMetric("Koliko sam večerao");
+            PersonalEvaluationMetric kolikoSamRazbijenDokPisam = new PersonalEvaluationMetric("Koliko sam razbijen dok pišam");
+
+
         }
     }
 }

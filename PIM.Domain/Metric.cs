@@ -2,6 +2,9 @@
 
 namespace PIM.Domain
 {
+	// weekly based metrike
+	// daily based metrike
+
 	public abstract class Metric
 	{
 		private string _name;
