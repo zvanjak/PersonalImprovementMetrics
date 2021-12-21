@@ -9,5 +9,6 @@ namespace PIM.Domain
     public class MetricMeasurement
     {
         string _noteText;
+        // date of measurement
     }
 }

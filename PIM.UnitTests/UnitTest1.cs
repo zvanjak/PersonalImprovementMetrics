@@ -23,6 +23,8 @@ namespace PIM.UnitTests
             PersonalEvaluationMetric kolikoSamRazbijenDokPisam = new PersonalEvaluationMetric("Koliko sam razbijen dok pišam");
 
 
+            // kategorije
+            // zadravlje, trava i alkohol, um, social (face, blog, izlasci i druženja, ivanka (posvećenost, djeci, kući, meni)
         }
     }
 }
