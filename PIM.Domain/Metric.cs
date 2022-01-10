@@ -86,6 +86,7 @@ namespace PIM.Domain
 
 	}
 
+	// da može imati i external source! povlači se iz Health
 	public class MeasuredValueMetric : Metric
 	{
 
