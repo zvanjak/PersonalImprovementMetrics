@@ -20,14 +20,18 @@ namespace PIM.UnitTests
       DailyMeasuredValueMetric  metricTezina = new DailyMeasuredValueMetric("Težina", zdravlje);
       DailyMeasuredValueMetric  metricProcitanihStranicaKnjige = new DailyMeasuredValueMetric("Pročitanih stranica", znanje);
 
-      // dodati par mjerenja težine
+      // dodati par mjerenja
+      // težina
       DailyEvaluationMetricMeasurement tez1 = new DailyEvaluationMetricMeasurement(new System.DateTime(2022, 1, 3), 94.5f);
+      // ustajanje
+      // pročitano stranica knjige
 
       // definirati performance metrike
       DailyPerformanceMetricMeasuredValueFormula tezina92kg = new DailyPerformanceMetricMeasuredValueFormula("Težina 92 kg", metricTezina);
 
       DailyPerformanceMetricActionTimeFormula ustajanjeDo8 = new DailyPerformanceMetricActionTimeFormula("Ustati do 8", metricVrijemeUstajanja);
 
+      WeeklyPerformanceMetricMeasuredValueFormula procitati200Stranica = new WeeklyPerformanceMetricMeasuredValueFormula("Pročitati 200 stranica tjedno", metricProcitanihStranicaKnjige);
       // evaluirati peroformanse metrike
 
       // metrike
