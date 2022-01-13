@@ -23,17 +23,34 @@ namespace PIM.UnitTests
       // dodati par mjerenja
       // smirenots
       DailyEvaluationMetricMeasurement smir1 = new DailyEvaluationMetricMeasurement(new System.DateTime(2022, 1, 3), 3);
-      
+      DailyEvaluationMetricMeasurement smir2 = new DailyEvaluationMetricMeasurement(new System.DateTime(2022, 1, 4), 3);
+      DailyEvaluationMetricMeasurement smir3 = new DailyEvaluationMetricMeasurement(new System.DateTime(2022, 1, 5), 3);
+      DailyEvaluationMetricMeasurement smir4 = new DailyEvaluationMetricMeasurement(new System.DateTime(2022, 1, 6), 3);
+      DailyEvaluationMetricMeasurement smir5 = new DailyEvaluationMetricMeasurement(new System.DateTime(2022, 1, 7), 3);
+      DailyEvaluationMetricMeasurement smir6 = new DailyEvaluationMetricMeasurement(new System.DateTime(2022, 1, 8), 3);
+      DailyEvaluationMetricMeasurement smir7 = new DailyEvaluationMetricMeasurement(new System.DateTime(2022, 1, 9), 3);
+
+      metricSmirenost.AddMeasurement(smir1);
+      metricSmirenost.AddMeasurement(smir2);
+      metricSmirenost.AddMeasurement(smir3);
+      metricSmirenost.AddMeasurement(smir4);
+      metricSmirenost.AddMeasurement(smir5);
+      metricSmirenost.AddMeasurement(smir6);
+      metricSmirenost.AddMeasurement(smir7);
+
       // težina
       DailyMeasureValueMetricMeasurement tez1 = new DailyMeasureValueMetricMeasurement(new System.DateTime(2022, 1, 3), 94.5f);
 
       // ustajanje
       DailyActionTimeMetricMeasurement ust1 = new DailyActionTimeMetricMeasurement(new System.DateTime(2022, 1, 2), 8, 45);
+      
       // pročitano stranica knjige
       DailyMeasureValueMetricMeasurement knjiga1 = new DailyMeasureValueMetricMeasurement(new System.DateTime(2022, 1, 3), 0);
       DailyMeasureValueMetricMeasurement knjiga2 = new DailyMeasureValueMetricMeasurement(new System.DateTime(2022, 1, 3), 0);
 
       // definirati performance metrike
+      DailyPerformanceMetricDailyEvaluation smirenost = new DailyPerformanceMetricDailyEvaluation("Smirenost bar 4.5", metricSmirenost);
+
       DailyPerformanceMetricMeasuredValueFormula tezina92kg = new DailyPerformanceMetricMeasuredValueFormula("Težina 92 kg", metricTezina);
 
       DailyPerformanceMetricActionTimeFormula ustajanjeDo8 = new DailyPerformanceMetricActionTimeFormula("Ustati do 8", metricVrijemeUstajanja);
