@@ -15,14 +15,18 @@ namespace PIM.UnitTests
       MetricCategory znanje = new MetricCategory("Znanje i blog");
 
       // metrike
-      DailyEvaluationMetric     metricObilnostVecere = new DailyEvaluationMetric("Koliko sam večerao", zdravlje);
+      DailyEvaluationMetric     metricSmirenost = new DailyEvaluationMetric("Koliko sam smiren", zdravlje);
       DailyActionTimeMetric     metricVrijemeUstajanja = new DailyActionTimeMetric("Vrijeme ustajanja", zdravlje);
       DailyMeasuredValueMetric  metricTezina = new DailyMeasuredValueMetric("Težina", zdravlje);
       DailyMeasuredValueMetric  metricProcitanihStranicaKnjige = new DailyMeasuredValueMetric("Pročitanih stranica", znanje);
 
       // dodati par mjerenja
+      // smirenots
+      DailyEvaluationMetricMeasurement smir1 = new DailyEvaluationMetricMeasurement(new System.DateTime(2022, 1, 3), 3);
+      
       // težina
-      DailyEvaluationMetricMeasurement tez1 = new DailyEvaluationMetricMeasurement(new System.DateTime(2022, 1, 3), 94.5f);
+      DailyMeasureValueMetricMeasurement tez1 = new DailyMeasureValueMetricMeasurement(new System.DateTime(2022, 1, 3), 94.5f);
+
       // ustajanje
       DailyActionTimeMetricMeasurement ust1 = new DailyActionTimeMetricMeasurement(new System.DateTime(2022, 1, 2), 8, 45);
       // pročitano stranica knjige

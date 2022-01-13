@@ -70,25 +70,19 @@ namespace PIM.Domain
 			Name = name;
 			Category = inCategory;
 		}
-
-		public abstract double evaluateForMonth(DateTime date);
 	}
 
 	public abstract class WeeklyMetric : Metric
 	{
 		public WeeklyMetric(string name, MetricCategory inCategory) : base(name, inCategory)		{	}
-
-		public abstract double evaluateForWeek(DateTime date);
-		//public abstract double evaluateForWeek(int inWeekOrdNum);
 	}
 
 	public abstract class DailyMetric : WeeklyMetric
 	{
 		public DailyMetric(string name, MetricCategory inCategory) : base(name, inCategory) { }
-
-		public abstract double evaluateForDay(DateTime date);
 	}
 
+	/// //////////////////////////////////////////////////////////////////
 	public class DailyEvaluationMetric : DailyMetric
 	{
 		List<DailyEvaluationMetricMeasurement> _listMeasurements = new List<DailyEvaluationMetricMeasurement>();
@@ -99,9 +93,10 @@ namespace PIM.Domain
 		{
 		}
 
-		public override double evaluateForDay(DateTime date) { return 0.0f; }
-		public override double evaluateForWeek(DateTime date) { return 1.0; }
-		public override double evaluateForMonth(DateTime date) { return 1.0; }
+		public void AddMeasurement(DailyEvaluationMetricMeasurement inMeas)
+    {
+			_listMeasurements.Add(inMeas);
+    }
 	}
 
 	public class DailyActionTimeMetric : DailyMetric
@@ -114,11 +109,6 @@ namespace PIM.Domain
 		public DailyActionTimeMetric(string name, MetricCategory inCategory) : base(name, inCategory)
 		{
 		}
-
-		public override double evaluateForDay(DateTime date) { return 0.0f; }
-		public override double evaluateForWeek(DateTime date) { return 1.0; }
-		public override double evaluateForMonth(DateTime date) { return 1.0; }
-
 	}
 
 	// da može imati i external source! povlači se iz Health
@@ -128,9 +118,5 @@ namespace PIM.Domain
 		public DailyMeasuredValueMetric(string name, MetricCategory inCategory) : base(name, inCategory)
 		{
 		}
-		public override double evaluateForDay(DateTime date) { return 0.0f; }
-		public override double evaluateForWeek(DateTime date) { return 1.0; }
-		public override double evaluateForMonth(DateTime date) { return 1.0; }
 	}
-
 }
