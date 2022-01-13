@@ -1,5 +1,8 @@
 ﻿using System;
 
+using System.Collections;
+using System.Collections.Generic;
+
 /*
 Obitelj - praćene metrike
 1. koliko sam dobar
@@ -72,29 +75,30 @@ namespace PIM.Domain
 
 	public abstract class WeeklyMetric : Metric
 	{
-		private string _name;
-		private MetricCategory _category;
-
-		public string Name { get => _name; set => _name = value; }
-		internal MetricCategory Category { get => _category; set => _category = value; }
-
-		// privatnost
-
-		public WeeklyMetric(string name) : base(name)
-		{
-		}
+		public WeeklyMetric(string name) : base(name)		{	}
 
 		public abstract double evaluateForWeek(DateTime date);
+		//public abstract double evaluateForWeek(int inWeekOrdNum);
 	}
 
-	public class DailyEvaluationMetric : WeeklyMetric
+	public abstract class DailyMetric : WeeklyMetric
 	{
+		public DailyMetric(string name) : base(name) { }
+
+		public abstract double evaluateForDay(DateTime date);
+	}
+
+	public class DailyEvaluationMetric : DailyMetric
+	{
+		List<DailyEvaluationMetricMeasurement> _listMeasurements = new List<DailyEvaluationMetricMeasurement>();
+
 		// grade from 1-5, given daily
 		// daily? ako je samo jedna ocjena u danu, to je za dan ... ali, može ih biti i više
 		public DailyEvaluationMetric(string name) : base(name)
 		{
 		}
 
+		public override double evaluateForDay(DateTime date) { return 0.0f; }
 		public override double evaluateForWeek(DateTime date) { return 1.0; }
 		public override double evaluateForMonth(DateTime date) { return 1.0; }
 
@@ -115,38 +119,6 @@ namespace PIM.Domain
 		public override double evaluateForMonth(DateTime date) { return 1.0; }
 
 	}
-	public class ActionTimeMetricManual : WeeklyMetric
-	{
-		public ActionTimeMetricManual(string name) : base(name)
-		{
-		}
-
-		public override double evaluateForWeek(DateTime date) { return 1.0; }
-		public override double evaluateForMonth(DateTime date) { return 1.0; }
-
-	}
-	public class ActionTimeMetricFormula : WeeklyMetric
-	{
-		// ima definiranu value za 5
-		// i onda parametar za nagib pravca
-		public ActionTimeMetricFormula(string name) : base(name)
-		{
-		}
-
-		public override double evaluateForWeek(DateTime date) { return 1.0; }
-		public override double evaluateForMonth(DateTime date) { return 1.0; }
-
-	}
-	public class ActionTimeMetricIntervals : WeeklyMetric
-	{
-		public ActionTimeMetricIntervals(string name) : base(name)
-		{
-		}
-
-		public override double evaluateForWeek(DateTime date) { return 1.0; }
-		public override double evaluateForMonth(DateTime date) { return 1.0; }
-
-	}
 
 	// da može imati i external source! povlači se iz Health
 	public class MeasuredValueMetric : WeeklyMetric
@@ -157,39 +129,6 @@ namespace PIM.Domain
 		}
 		public override double evaluateForWeek(DateTime date) { return 1.0; }
 		public override double evaluateForMonth(DateTime date) { return 1.0; }
-
-
 	}
-	public class MeasuredValueMetricManual : WeeklyMetric
-	{
-		public MeasuredValueMetricManual(string name) : base(name)
-		{
-		}
 
-		public override double evaluateForWeek(DateTime date) { return 1.0; }
-		public override double evaluateForMonth(DateTime date) { return 1.0; }
-
-	}
-	public class MeasuredValueMetricFormula : WeeklyMetric
-	{
-		// ima definiranu value za 5
-		// i onda parametar za nagib pravca
-		public MeasuredValueMetricFormula(string name) : base(name)
-		{
-		}
-
-		public override double evaluateForWeek(DateTime date) { return 1.0; }
-		public override double evaluateForMonth(DateTime date) { return 1.0; }
-
-	}
-	public class MeasuredValueMetricIntervals : WeeklyMetric
-	{
-		public MeasuredValueMetricIntervals(string name) : base(name)
-		{
-		}
-
-		public override double evaluateForWeek(DateTime date) { return 1.0; }
-		public override double evaluateForMonth(DateTime date) { return 1.0; }
-
-	}
 }

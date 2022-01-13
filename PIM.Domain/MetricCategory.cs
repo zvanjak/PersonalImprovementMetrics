@@ -6,8 +6,16 @@ using System.Threading.Tasks;
 
 namespace PIM.Domain
 {
-    class MetricCategory
+  public class MetricCategory
+  {
+    private string _name;
+    public string Name { get => _name; set => _name = value; }
+
+    // imamo i listu defaultnih kategorija
+
+    public MetricCategory(string inName)
     {
+      Name = inName;
     }
-    // imam oi listu defaultnih kategorija
+  }
 }
