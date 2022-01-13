@@ -51,27 +51,43 @@ namespace PIM.Domain
 	// weekly based metrike
 	// daily based metrike
 
+
 	public abstract class Metric
 	{
 		private string _name;
+		private MetricCategory _category;
 
 		public string Name { get => _name; set => _name = value; }
-
-		// kategorija metrike
+		internal MetricCategory Category { get => _category; set => _category = value; }
 
 		// privatnost
 
-		// time validity - imamo i "privremene" metrike 
 		public Metric(string name)
 		{
 			Name = name;
 		}
 
-		public abstract double  evaluateForWeek(DateTime date);
-		public abstract double  evaluateForMonth(DateTime date);
+		public abstract double evaluateForMonth(DateTime date);
 	}
 
-	public class DailyEvaluationMetric : Metric
+	public abstract class WeeklyMetric : Metric
+	{
+		private string _name;
+		private MetricCategory _category;
+
+		public string Name { get => _name; set => _name = value; }
+		internal MetricCategory Category { get => _category; set => _category = value; }
+
+		// privatnost
+
+		public WeeklyMetric(string name) : base(name)
+		{
+		}
+
+		public abstract double evaluateForWeek(DateTime date);
+	}
+
+	public class DailyEvaluationMetric : WeeklyMetric
 	{
 		// grade from 1-5, given daily
 		// daily? ako je samo jedna ocjena u danu, to je za dan ... ali, može ih biti i više
@@ -84,14 +100,14 @@ namespace PIM.Domain
 
 	}
 
-	public class ActionTimeMetric : Metric
+	public class DailyActionTimeMetric : WeeklyMetric
 	{
 		//- "kad nešto treba napraviti", ciljano vrijeme za akciju, zapiše se vrijeme, i na osnovu toga izračuna ocjena za taj dan, uzimajući u obzir definirane intervale
-		   // - spavanje, lijeganje
-		   // - večera
-		   // - kad sam zapalio
-		   // - svaki ima neki vremenski trenutak, u odnosu na koji se formira ocjena
-		public ActionTimeMetric(string name) : base(name)
+			 // - spavanje, lijeganje
+			 // - večera
+			 // - kad sam zapalio
+			 // - svaki ima neki vremenski trenutak, u odnosu na koji se formira ocjena
+		public DailyActionTimeMetric(string name) : base(name)
 		{
 		}
 
@@ -99,7 +115,7 @@ namespace PIM.Domain
 		public override double evaluateForMonth(DateTime date) { return 1.0; }
 
 	}
-	public class ActionTimeMetricManual : Metric
+	public class ActionTimeMetricManual : WeeklyMetric
 	{
 		public ActionTimeMetricManual(string name) : base(name)
 		{
@@ -109,7 +125,7 @@ namespace PIM.Domain
 		public override double evaluateForMonth(DateTime date) { return 1.0; }
 
 	}
-	public class ActionTimeMetricFormula : Metric
+	public class ActionTimeMetricFormula : WeeklyMetric
 	{
 		// ima definiranu value za 5
 		// i onda parametar za nagib pravca
@@ -121,7 +137,7 @@ namespace PIM.Domain
 		public override double evaluateForMonth(DateTime date) { return 1.0; }
 
 	}
-	public class ActionTimeMetricIntervals : Metric
+	public class ActionTimeMetricIntervals : WeeklyMetric
 	{
 		public ActionTimeMetricIntervals(string name) : base(name)
 		{
@@ -133,7 +149,7 @@ namespace PIM.Domain
 	}
 
 	// da može imati i external source! povlači se iz Health
-	public class MeasuredValueMetric : Metric
+	public class MeasuredValueMetric : WeeklyMetric
 	{
 
 		public MeasuredValueMetric(string name) : base(name)
@@ -144,7 +160,7 @@ namespace PIM.Domain
 
 
 	}
-	public class MeasuredValueMetricManual : Metric
+	public class MeasuredValueMetricManual : WeeklyMetric
 	{
 		public MeasuredValueMetricManual(string name) : base(name)
 		{
@@ -154,7 +170,7 @@ namespace PIM.Domain
 		public override double evaluateForMonth(DateTime date) { return 1.0; }
 
 	}
-	public class MeasuredValueMetricFormula : Metric
+	public class MeasuredValueMetricFormula : WeeklyMetric
 	{
 		// ima definiranu value za 5
 		// i onda parametar za nagib pravca
@@ -166,7 +182,7 @@ namespace PIM.Domain
 		public override double evaluateForMonth(DateTime date) { return 1.0; }
 
 	}
-	public class MeasuredValueMetricIntervals : Metric
+	public class MeasuredValueMetricIntervals : WeeklyMetric
 	{
 		public MeasuredValueMetricIntervals(string name) : base(name)
 		{

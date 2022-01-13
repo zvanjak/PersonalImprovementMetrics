@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PIM.Domain
 {
-    class CategoryOfMetrics
+    class MetricCategory
     {
     }
     // imam oi listu defaultnih kategorija

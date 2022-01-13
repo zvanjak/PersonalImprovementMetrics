@@ -4,7 +4,7 @@ using PIM.Domain;
 namespace PIM.UnitTests
 {
   [TestClass]
-  public class Metric
+  public class MetricTests
   {
     [TestMethod]
     public void TestMethod1()
