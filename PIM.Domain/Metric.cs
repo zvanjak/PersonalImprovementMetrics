@@ -65,9 +65,10 @@ namespace PIM.Domain
 
 		// privatnost
 
-		public Metric(string name)
+		public Metric(string name, MetricCategory inCategory)
 		{
 			Name = name;
+			Category = inCategory;
 		}
 
 		public abstract double evaluateForMonth(DateTime date);
@@ -75,7 +76,7 @@ namespace PIM.Domain
 
 	public abstract class WeeklyMetric : Metric
 	{
-		public WeeklyMetric(string name) : base(name)		{	}
+		public WeeklyMetric(string name, MetricCategory inCategory) : base(name, inCategory)		{	}
 
 		public abstract double evaluateForWeek(DateTime date);
 		//public abstract double evaluateForWeek(int inWeekOrdNum);
@@ -83,7 +84,7 @@ namespace PIM.Domain
 
 	public abstract class DailyMetric : WeeklyMetric
 	{
-		public DailyMetric(string name) : base(name) { }
+		public DailyMetric(string name, MetricCategory inCategory) : base(name, inCategory) { }
 
 		public abstract double evaluateForDay(DateTime date);
 	}
@@ -94,7 +95,23 @@ namespace PIM.Domain
 
 		// grade from 1-5, given daily
 		// daily? ako je samo jedna ocjena u danu, to je za dan ... ali, može ih biti i više
-		public DailyEvaluationMetric(string name) : base(name)
+		public DailyEvaluationMetric(string name, MetricCategory inCategory) : base(name, inCategory)
+		{
+		}
+
+		public override double evaluateForDay(DateTime date) { return 0.0f; }
+		public override double evaluateForWeek(DateTime date) { return 1.0; }
+		public override double evaluateForMonth(DateTime date) { return 1.0; }
+	}
+
+	public class DailyActionTimeMetric : DailyMetric
+	{
+		//- "kad nešto treba napraviti", ciljano vrijeme za akciju, zapiše se vrijeme, i na osnovu toga izračuna ocjena za taj dan, uzimajući u obzir definirane intervale
+			 // - spavanje, lijeganje
+			 // - večera
+			 // - kad sam zapalio
+			 // - svaki ima neki vremenski trenutak, u odnosu na koji se formira ocjena
+		public DailyActionTimeMetric(string name, MetricCategory inCategory) : base(name, inCategory)
 		{
 		}
 
@@ -104,29 +121,14 @@ namespace PIM.Domain
 
 	}
 
-	public class DailyActionTimeMetric : WeeklyMetric
-	{
-		//- "kad nešto treba napraviti", ciljano vrijeme za akciju, zapiše se vrijeme, i na osnovu toga izračuna ocjena za taj dan, uzimajući u obzir definirane intervale
-			 // - spavanje, lijeganje
-			 // - večera
-			 // - kad sam zapalio
-			 // - svaki ima neki vremenski trenutak, u odnosu na koji se formira ocjena
-		public DailyActionTimeMetric(string name) : base(name)
-		{
-		}
-
-		public override double evaluateForWeek(DateTime date) { return 1.0; }
-		public override double evaluateForMonth(DateTime date) { return 1.0; }
-
-	}
-
 	// da može imati i external source! povlači se iz Health
-	public class MeasuredValueMetric : WeeklyMetric
+	public class DailyMeasuredValueMetric : DailyMetric
 	{
 
-		public MeasuredValueMetric(string name) : base(name)
+		public DailyMeasuredValueMetric(string name, MetricCategory inCategory) : base(name, inCategory)
 		{
 		}
+		public override double evaluateForDay(DateTime date) { return 0.0f; }
 		public override double evaluateForWeek(DateTime date) { return 1.0; }
 		public override double evaluateForMonth(DateTime date) { return 1.0; }
 	}

@@ -12,14 +12,15 @@ namespace PIM.UnitTests
       // kategorije - Smirenost, zdravlje, Um, Posao, Ivanka, Blog, Osobno, Ivankine metrike, Privat
       MetricCategory obitelj = new MetricCategory("Obitelj");
       MetricCategory zdravlje = new MetricCategory("Zdravlje");
-      MetricCategory drogaAlkohol = new MetricCategory("Zdravlje");
       MetricCategory znanje = new MetricCategory("Znanje i blog");
 
-      DailyEvaluationMetric kolikoSamVecerao = new DailyEvaluationMetric("Koliko sam večerao");
+      DailyEvaluationMetric obilnostVecere = new DailyEvaluationMetric("Koliko sam večerao", zdravlje;
 
-      ActionTimeMetricFormula ustatiDo8 = new ActionTimeMetricFormula("Vrijeme ustajanja");
+      DailyActionTimeMetric  ustatiDo8 = new DailyActionTimeMetric("Vrijeme ustajanja", zdravlje);
 
-      MeasuredValueMetricFormula tezina = new MeasuredValueMetricFormula("Težina");
+      DailyMeasuredValueMetric tezina = new DailyMeasuredValueMetric("Težina", zdravlje);
+
+      DailyMeasuredValueMetric procitanihStranicaKnjige = new DailyMeasuredValueMetric("Pročitanih stranica", znanje);
 
       // metrike
       //ActionTimeMetricIntervals kadSamZapalioPrvog = new ActionTimeMetricIntervals("Kad sam zapalio prvoga");
