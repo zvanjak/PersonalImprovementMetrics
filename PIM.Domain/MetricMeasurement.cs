@@ -15,12 +15,22 @@ namespace PIM.Domain
 
     public DateTime DateOfMeasurement { get => _dateOfMeasurement; set => _dateOfMeasurement = value; }
     public string NoteText { get => _noteText; set => _noteText = value; }
+
+    public MetricMeasurement(DateTime inDate)
+    {
+      DateOfMeasurement = inDate;
+    }
   }
 
-  public class DailyEvaluationMetricMeasurement
+  public class DailyEvaluationMetricMeasurement : MetricMeasurement
   {
     private double _value;
 
     public double Value { get => _value; set => _value = value; }
+
+    public DailyEvaluationMetricMeasurement(DateTime inDate, double inValue) : base(inDate)
+    {
+      Value = inValue;
+    }
   }
 }
