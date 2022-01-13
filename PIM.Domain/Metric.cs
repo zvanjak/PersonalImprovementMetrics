@@ -25,11 +25,11 @@ namespace PIM.Domain
 		public abstract double  evaluateForMonth(DateTime date);
 	}
 
-	public class PersonalEvaluationMetric : Metric
+	public class DailyEvaluationMetric : Metric
 	{
 		// grade from 1-5, given daily
 		// daily? ako je samo jedna ocjena u danu, to je za dan ... ali, može ih biti i više
-		public PersonalEvaluationMetric(string name) : base(name)
+		public DailyEvaluationMetric(string name) : base(name)
 		{
 		}
 
