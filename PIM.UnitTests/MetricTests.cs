@@ -40,10 +40,8 @@ namespace PIM.UnitTests
 
       // težina
       DailyMeasureValueMetricMeasurement tez1 = new DailyMeasureValueMetricMeasurement(new System.DateTime(2022, 1, 3), 94.5f);
-
       // ustajanje
       DailyActionTimeMetricMeasurement ust1 = new DailyActionTimeMetricMeasurement(new System.DateTime(2022, 1, 2), 8, 45);
-      
       // pročitano stranica knjige
       DailyMeasureValueMetricMeasurement knjiga1 = new DailyMeasureValueMetricMeasurement(new System.DateTime(2022, 1, 3), 0);
       DailyMeasureValueMetricMeasurement knjiga2 = new DailyMeasureValueMetricMeasurement(new System.DateTime(2022, 1, 3), 0);
@@ -52,12 +50,12 @@ namespace PIM.UnitTests
       DailyPerformanceMetricDailyEvaluation smirenost = new DailyPerformanceMetricDailyEvaluation("Smirenost bar 4.5", metricSmirenost);
 
       DailyPerformanceMetricMeasuredValueFormula tezina92kg = new DailyPerformanceMetricMeasuredValueFormula("Težina 92 kg", metricTezina);
-
       DailyPerformanceMetricActionTimeFormula ustajanjeDo8 = new DailyPerformanceMetricActionTimeFormula("Ustati do 8", metricVrijemeUstajanja);
-
       WeeklyPerformanceMetricDailyMeasuredValueFormula procitati200Stranica = new WeeklyPerformanceMetricDailyMeasuredValueFormula("Pročitati 200 stranica tjedno", metricProcitanihStranicaKnjige);
-      
-      // evaluirati peroformanse metrike
+
+      // evaluirati performanse metrike
+      Assert.AreEqual(3.0f, smirenost.evaluateForWeek(new System.DateTime(2022, 1, 5)));
+
 
       // metrike
       //ActionTimeMetricIntervals kadSamZapalioPrvog = new ActionTimeMetricIntervals("Kad sam zapalio prvoga");
