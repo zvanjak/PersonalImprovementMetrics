@@ -39,10 +39,21 @@ namespace PIM.Domain
     private DateTime _actionPerformed;
     public DateTime ActionPerformed { get => _actionPerformed; set => _actionPerformed = value; }
 
-    public DailyActionTimeMetricMeasurement(DateTime inDate, DateTime inActionPerformedTime) : base(inDate)
+    public DailyActionTimeMetricMeasurement(DateTime inDate, int hour, int minute) : base(inDate)
     {
-      ActionPerformed = inActionPerformedTime;
+      ActionPerformed = new DateTime(inDate.Year, inDate.Month, inDate.Day, hour, minute, 0);
     }
-
   }
+  public class DailyMeasureValueMetricMeasurement : MetricMeasurement
+  {
+    private double _value;
+
+    public double Value { get => _value; set => _value = value; }
+
+    public DailyMeasureValueMetricMeasurement(DateTime inDate, double inValue) : base(inDate)
+    {
+      Value = inValue;
+    }
+  }
+
 }
