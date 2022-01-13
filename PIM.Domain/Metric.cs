@@ -85,7 +85,7 @@ namespace PIM.Domain
 	/// //////////////////////////////////////////////////////////////////
 	public class DailyEvaluationMetric : DailyMetric
 	{
-		List<DailyEvaluationMetricMeasurement> _listMeasurements = new List<DailyEvaluationMetricMeasurement>();
+		public List<DailyEvaluationMetricMeasurement> _listMeasurements = new List<DailyEvaluationMetricMeasurement>();
 
 		// grade from 1-5, given daily
 		// daily? ako je samo jedna ocjena u danu, to je za dan ... ali, može ih biti i više
