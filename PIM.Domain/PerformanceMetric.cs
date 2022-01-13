@@ -55,64 +55,69 @@ namespace PIM.Domain
     public override double evaluateForYear(int year) { return 0.0f; }
   }
 
+  public class DailyPerformanceMetricActionTimeFormula : DailyPerformanceMetric
+  {
+    // ima definiranu value za 5
+    // i onda parametar za nagib pravca
+    public DailyPerformanceMetricActionTimeFormula(string name, DailyMetric inBaseMetric) : base(name, inBaseMetric)
+    {
+    }
 
-    //public class ActionTimeMetricManual : WeeklyMetric
-    //{
-    //	public ActionTimeMetricManual(string name) : base(name)
-    //	{
-    //	}
+    public override double evaluateForDay(DateTime date) { return 0.0f; }
+    public override double evaluateForWeek(DateTime date) { return 0.0f; }
+    public override double evaluateForWeek(int weekOrdNum) { return 0.0f; }
+    public override double evaluateForMonth(DateTime date) { return 0.0f; }
+    public override double evaluateForYear(int year) { return 0.0f; }
 
-    //	public override double evaluateForWeek(DateTime date) { return 1.0; }
-    //	public override double evaluateForMonth(DateTime date) { return 1.0; }
-
-    //}
-    //public class ActionTimeMetricFormula : WeeklyMetric
-    //{
-    //	// ima definiranu value za 5
-    //	// i onda parametar za nagib pravca
-    //	public ActionTimeMetricFormula(string name) : base(name)
-    //	{
-    //	}
-
-    //	public override double evaluateForWeek(DateTime date) { return 1.0; }
-    //	public override double evaluateForMonth(DateTime date) { return 1.0; }
-
-    //}
-    //public class ActionTimeMetricIntervals : WeeklyMetric
-    //{
-    //	public ActionTimeMetricIntervals(string name) : base(name)
-    //	{
-    //	}
-
-    //	public override double evaluateForWeek(DateTime date) { return 1.0; }
-    //	public override double evaluateForMonth(DateTime date) { return 1.0; }
-
-    //}
+  }
 
 
-    //public class MeasuredValueMetricManual : WeeklyMetric
-    //{
-    //	public MeasuredValueMetricManual(string name) : base(name)
-    //	{
-    //	}
+  //public class ActionTimeMetricManual : WeeklyMetric
+  //{
+  //	public ActionTimeMetricManual(string name) : base(name)
+  //	{
+  //	}
 
-    //	public override double evaluateForWeek(DateTime date) { return 1.0; }
-    //	public override double evaluateForMonth(DateTime date) { return 1.0; }
+  //	public override double evaluateForWeek(DateTime date) { return 1.0; }
+  //	public override double evaluateForMonth(DateTime date) { return 1.0; }
 
-    //}
+  //}
 
-    //	public override double evaluateForWeek(DateTime date) { return 1.0; }
-    //	public override double evaluateForMonth(DateTime date) { return 1.0; }
+  //public class ActionTimeMetricIntervals : WeeklyMetric
+  //{
+  //	public ActionTimeMetricIntervals(string name) : base(name)
+  //	{
+  //	}
 
-    //}
-    //public class MeasuredValueMetricIntervals : WeeklyMetric
-    //{
-    //	public MeasuredValueMetricIntervals(string name) : base(name)
-    //	{
-    //	}
+  //	public override double evaluateForWeek(DateTime date) { return 1.0; }
+  //	public override double evaluateForMonth(DateTime date) { return 1.0; }
 
-    //	public override double evaluateForWeek(DateTime date) { return 1.0; }
-    //	public override double evaluateForMonth(DateTime date) { return 1.0; }
+  //}
 
-    //}
+
+  //public class MeasuredValueMetricManual : WeeklyMetric
+  //{
+  //	public MeasuredValueMetricManual(string name) : base(name)
+  //	{
+  //	}
+
+  //	public override double evaluateForWeek(DateTime date) { return 1.0; }
+  //	public override double evaluateForMonth(DateTime date) { return 1.0; }
+
+  //}
+
+  //	public override double evaluateForWeek(DateTime date) { return 1.0; }
+  //	public override double evaluateForMonth(DateTime date) { return 1.0; }
+
+  //}
+  //public class MeasuredValueMetricIntervals : WeeklyMetric
+  //{
+  //	public MeasuredValueMetricIntervals(string name) : base(name)
+  //	{
+  //	}
+
+  //	public override double evaluateForWeek(DateTime date) { return 1.0; }
+  //	public override double evaluateForMonth(DateTime date) { return 1.0; }
+
+  //}
 }

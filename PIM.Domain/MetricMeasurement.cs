@@ -33,4 +33,16 @@ namespace PIM.Domain
       Value = inValue;
     }
   }
+
+  public class ActionTimeMetricMeasurement : MetricMeasurement
+  {
+    private DateTime _actionPerformed;
+    public DateTime ActionPerformed { get => _actionPerformed; set => _actionPerformed = value; }
+
+    public ActionTimeMetricMeasurement(DateTime inDate, DateTime inActionPerformedTime) : base(inDate)
+    {
+      ActionPerformed = inActionPerformedTime;
+    }
+
+  }
 }
