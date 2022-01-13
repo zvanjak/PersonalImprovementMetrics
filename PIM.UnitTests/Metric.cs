@@ -4,7 +4,7 @@ using PIM.Domain;
 namespace PIM.UnitTests
 {
   [TestClass]
-  public class UnitTest1
+  public class Metric
   {
     [TestMethod]
     public void TestMethod1()
@@ -12,10 +12,10 @@ namespace PIM.UnitTests
       // kategorije - Smirenost, zdravlje, Um, Posao, Ivanka, Blog, Osobno, Ivankine metrike, Privat
 
       // metrike
-      ActionTimeMetricFormula ustatiDo8 = new ActionTimeMetricFormula("Ustati do 8");
+      ActionTimeMetricFormula ustatiDo8 = new ActionTimeMetricFormula("Vrijeme ustajanja");
       ActionTimeMetricIntervals kadSamZapalioPrvog = new ActionTimeMetricIntervals("Kad sam zapalio prvoga");
-      ActionTimeMetricFormula spavanjeDo1 = new ActionTimeMetricFormula("Spavanje do 1");
-      ActionTimeMetricFormula veceratioDo21 = new ActionTimeMetricFormula("Večerati do 21");
+      ActionTimeMetricFormula spavanjeDo1 = new ActionTimeMetricFormula("Vrijeme odlaska na spavanje");
+      ActionTimeMetricFormula veceratioDo21 = new ActionTimeMetricFormula("Vrijeme večere");
 
       DailyEvaluationMetric kolikoSamVecerao = new DailyEvaluationMetric("Koliko sam večerao");
       DailyEvaluationMetric kolikoSamRazbijenDokPisam = new DailyEvaluationMetric("Koliko sam razbijen dok pišam");
